@@ -1,18 +1,37 @@
 library(ggplot2)
 library(ggthemes)
 library(extrafont)
+library(dplyr)
+library("FactoMineR")
+library("factoextra")
+library(extrafont)
+library(ggplot2)
+library(pastecs)
+library(corrplot)
+library(ppcor)
+library(factoextra)
+library(psych)
+library(GPArotation)
+library(Hmisc)
+library(dplyr)
+library(ape)
+library(psych)
+library(psychometric)
+
 options(scipen = 999)
 setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
 
 charts.data <- read.csv("Dengue_SA_data.csv")
 charts.data
 
+describe.by(charts.data$CasesPerTh, charts.data$Countries)
+
 
 p3 <- ggplot() + geom_line(aes(y = log10(CasesPerTh+1), x = Year, colour = Countries), size=1,
                            data = charts.data, stat="identity")+  xlab("Years") + ylab("Dengue cases per thousand (log10)") + 
   theme(legend.title = element_text(size=15),
         legend.text = element_text(size=15),
-       legend.position = c(0.15, 0.85),
+       legend.position = c(0.10, 0.80),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 90, vjust = 0.4, hjust=0.5),
         text=element_text(size=15)) +
@@ -20,11 +39,11 @@ p3 <- ggplot() + geom_line(aes(y = log10(CasesPerTh+1), x = Year, colour = Count
 
 p3
 
-p4 <- ggplot() + geom_line(aes(y = CFR...., x = Year, colour = Countries), size=1,
+p4 <- ggplot() + geom_line(aes(y =CFR...., x = Year, colour = Countries), size=1,
                            data = charts.data, stat="identity")+  xlab("Years") + ylab("Case Fatality Ratio (%)") + 
   theme(legend.title = element_text(size=15),
         legend.text = element_text(size=15),
-        legend.position = c(0.85, 0.85),
+        legend.position = c(0.90, 0.80),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5),
         text=element_text(size=15)) +
