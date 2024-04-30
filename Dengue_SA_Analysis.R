@@ -17,6 +17,7 @@ library(dplyr)
 library(ape)
 library(psych)
 library(psychometric)
+library(psych)
 
 options(scipen = 999)
 setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
@@ -25,13 +26,107 @@ charts.data <- read.csv("Dengue_SA_data.csv")
 charts.data
 
 describe.by(charts.data$CasesPerTh, charts.data$Countries)
+describe.by(charts.data$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Afghanistan"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Afghanistan"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Bangladesh"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Bangladesh"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Bhutan"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Bhutan"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="India"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="India"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Maldives"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Maldives"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Nepal"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Nepal"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Pakistan"),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Pakistan"),]$CasesPerTh)
+
+IQR(charts.data[which(charts.data$Countries=="Sri Lanka "),]$CasesPerTh)
+summary(charts.data[which(charts.data$Countries=="Sri Lanka "),]$CasesPerTh)
+
+IQR(charts.data$CasesPerTh)
+summary(charts.data$CasesPerTh)
+
+
+
+
+
+
+
+describe.by(charts.data$Deaths, charts.data$Countries)
+describe.by(charts.data$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Afghanistan"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Afghanistan"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Bangladesh"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Bangladesh"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Bhutan"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Bhutan"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="India"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="India"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Maldives"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Maldives"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Nepal"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Nepal"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Pakistan"),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Pakistan"),]$Deaths)
+
+IQR(charts.data[which(charts.data$Countries=="Sri Lanka "),]$Deaths)
+summary(charts.data[which(charts.data$Countries=="Sri Lanka "),]$Deaths)
+
+IQR(charts.data$Deaths)
+summary(charts.data$Deaths)
+
+
+
+describe.by(charts.data$CFR...., charts.data$Countries)
+describe.by(charts.data$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Afghanistan"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Afghanistan"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Bangladesh"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Bangladesh"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Bhutan"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Bhutan"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="India"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="India"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Maldives"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Maldives"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Nepal"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Nepal"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Pakistan"),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Pakistan"),]$CFR....)
+
+IQR(charts.data[which(charts.data$Countries=="Sri Lanka "),]$CFR....)
+summary(charts.data[which(charts.data$Countries=="Sri Lanka "),]$CFR....)
+
+IQR(charts.data$CFR....)
+summary(charts.data$CFR....)
 
 
 p3 <- ggplot() + geom_line(aes(y = log10(CasesPerTh+1), x = Year, colour = Countries), size=1,
-                           data = charts.data, stat="identity")+  xlab("Years") + ylab("Dengue cases per thousand (log10)") + 
-  theme(legend.title = element_text(size=15),
-        legend.text = element_text(size=15),
-       legend.position = c(0.10, 0.80),
+                           data = charts.data, stat="identity")+  xlab("Years") + ylab("Dengue cases/100000 (log10)") + 
+  theme(legend.position='none',
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 90, vjust = 0.4, hjust=0.5),
         text=element_text(size=15)) +
@@ -41,9 +136,9 @@ p3
 
 p4 <- ggplot() + geom_line(aes(y =CFR...., x = Year, colour = Countries), size=1,
                            data = charts.data, stat="identity")+  xlab("Years") + ylab("Case Fatality Ratio (%)") + 
-  theme(legend.title = element_text(size=15),
+  theme(legend.position= "bottom",
+        legend.title = element_text(size=15),
         legend.text = element_text(size=15),
-        legend.position = c(0.90, 0.80),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5),
         text=element_text(size=15)) +
@@ -84,252 +179,6 @@ SA <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
         legend.title = element_text(size=20),
         legend.text = element_text(size=20))
 SA
-
-
-# library(gridExtra)
-# tiff("Serotypes_SA.tiff", units="in", width=8, height=6, res=300)
-# gridExtra::grid.arrange(SA)
-# dev.off()
-# 
-# 
-# 
-# #Afghanistan
-# factor(sertoData$Country)
-# sertoDataAfg <- sertoData[which(sertoData$Country=='Afghanistan'), ]
-# 
-# sertoDataAfg$Serotypes <- factor(sertoDataAfg$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                               labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataAfg$Serotypes)
-# prop.table(tab)*100
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(30, 20, 30, 20))
-# head(df)
-# 
-# Afg <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=2,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Afghanistan (2000-2023)")+
-#   theme(plot.title = element_text(size = 8,hjust=0.5),
-#         legend.title = element_text(size=8),
-#         legend.text = element_text(size=8))
-# Afg
-# 
-# #Bangladesh
-# factor(sertoData$Country)
-# sertoDataBng <- sertoData[which(sertoData$Country=='Bangladesh'), ]
-# 
-# sertoDataBng$Serotypes <- factor(sertoDataBng$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataBng$Serotypes)
-# prop.table(tab)*100
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(36.36, 36.36, 18.18, 9.10))
-# head(df)
-# 
-# Bng <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Bangladesh (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Bng
-# 
-# #Bhutan
-# factor(sertoData$Country)
-# sertoDataBtn <- sertoData[which(sertoData$Country=='Bhutan'), ]
-# 
-# sertoDataBtn$Serotypes <- factor(sertoDataBtn$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataBtn$Serotypes)
-# prop.table(tab)*100
-# 
-# 
-# 
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(36.84, 36.84, 26.32, 0.00))
-# head(df)
-# 
-# Btn <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Bhutan (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Btn
-# 
-# #India
-# factor(sertoData$Country)
-# sertoDataInd <- sertoData[which(sertoData$Country=='India'), ]
-# 
-# sertoDataInd$Serotypes <- factor(sertoDataInd$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataInd$Serotypes)
-# prop.table(tab)*100
-# 
-# 
-# 
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(28.92, 28.92, 28.92, 13.25))
-# head(df)
-# 
-# Ind <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in India (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Ind
-# 
-# #Maldives
-# factor(sertoData$Country)
-# sertoDataMal <- sertoData[which(sertoData$Country=='Maldives'), ]
-# 
-# sertoDataMal$Serotypes <- factor(sertoDataMal$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataMal$Serotypes)
-# prop.table(tab)*100
-# 
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(12.5, 25.0, 50.0, 12.5))
-# head(df)
-# 
-# 
-# Mal <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Maldives (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Mal
-# 
-# #Npl
-# factor(sertoData$Country)
-# sertoDataNpl <- sertoData[which(sertoData$Country=='Nepal'), ]
-# 
-# sertoDataNpl$Serotypes <- factor(sertoDataNpl$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataNpl$Serotypes)
-# prop.table(tab)*100
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(57.14, 28.57, 14.29, 0.00))
-# head(df)
-# 
-# Npl <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Nepal (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Npl
-# 
-# 
-# #Pakistan
-# factor(sertoData$Country)
-# sertoDataPak <- sertoData[which(sertoData$Country=='Pakistan'), ]
-# 
-# sertoDataPak$Serotypes <- factor(sertoDataPak$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataPak$Serotypes)
-# prop.table(tab)*100
-# 
-# 
-# 
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(31.58, 39.47, 26.32, 2.63))
-# head(df)
-# 
-# Pak <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Pakistan (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Pak
-# 
-# 
-# 
-# 
-# #Srilanka
-# factor(sertoData$Country)
-# sertoDataSri <- sertoData[which(sertoData$Country=='Srilanka'), ]
-# 
-# sertoDataSri$Serotypes <- factor(sertoDataSri$Serotypes,levels=c("DENV-1","DENV-2", "DENV-3","DENV-4"),
-#                                  labels = c("DENV-1","DENV-2", "DENV-3","DENV-4"))
-# 
-# tab <- table(sertoDataSri$Serotypes)
-# prop.table(tab)*100
-# 
-# 
-# 
-# # pie Age
-# df <- data.frame(Serotypes=c("DENV-1","DENV-2","DENV-3","DENV-4"),
-#                  Count=c(31.91, 14.89, 34.04, 19.15))
-# head(df)
-# 
-# Sri <- ggplot(df, aes(x = "", y = Count, fill = Serotypes)) +
-#   geom_col(color = "black") +
-#   geom_text(aes(label = Count),cex=3,
-#             position = position_stack(vjust = 0.5)) +
-#   coord_polar(theta = "y")+
-#   theme_void()+  theme_bw()+
-#   xlab("") + ylab("") + ggtitle("Dengue Serotypes in Sri Lanka (2000-2023)")+
-#   theme(plot.title = element_text(size = 10,hjust=0.5),
-#         legend.title = element_text(size=10),
-#         legend.text = element_text(size=10))
-# Sri
-# 
-# library(gridExtra)
-# tiff("Serotypes_SAC.tiff", units="in", width=5, height=5, res=300)
-# gridExtra::grid.arrange(Afg, Bng, Btn, Ind, Mal, Npl, Pak, Sri, nrow=4, ncol=2)
-# dev.off()
 
 
 df = data.frame(type = c(" South Asia"," South Asia"," South Asia"," South Asia",
@@ -396,13 +245,6 @@ library(dplyr)
 library(patchwork) # To display 2 charts together
 library(hrbrthemes)
 
-# Build dummy data
-data <- data.frame(
-  day = as.Date("2019-01-01") + 0:99,
-  temperature = runif(100) + seq(1,100)^2.5 / 10000,
-  price = runif(100) + seq(100,1)^1.5 / 10
-)
-
 data <- aggregate(cbind(Cases, Deaths) ~ Year, data = charts.data, FUN = sum, na.rm = TRUE)
 
 # Value used to transform the data
@@ -448,4 +290,42 @@ library(gridExtra)
 tiff("BarCasesDeaths.tiff", units="in", width=10, height=8, res=300)
 gridExtra::grid.arrange(doubleY)
 dev.off()
+
+
+library(ggplot2)
+library(tidyverse)
+setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
+dat <- read.csv("Country_Year.csv")
+
+
+dat$Countries <- factor(dat$Countries)
+dat$Year <- factor(dat$Year)
+#dat$Values <- factor(dat$Values)
+x<- ggplot(dat, aes( Countries, Year)) +
+  geom_tile(aes(fill = Values), colour = "black") +
+  geom_text(aes(label = Sero))+
+  guides(fill=guide_legend(title="Total \nSerotypes \nCount"))+
+  scale_fill_gradient(low = "white",high = "steelblue")+ 
+#  scale_fill_brewer(palette = "Dark2") +
+#   scale_shape_manual(values=c("0", "1", "2", "3", "4"))+ 
+#  scale_color_manual(values=c('white','red', 'darkgreen', 'grey', 'purple'))+
+  theme(legend.title = element_text(size=15),
+        legend.text = element_text(size=15),
+        plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 90, vjust = 0.25, hjust=1),
+        text=element_text(size=15),
+        axis.text.y = element_text(hjust = 0.5),
+        axis.title.x = element_text(hjust = 0.5,size=15))
+x
+
+tiff("x.tiff", units="in", width=8, height=8, res=300)
+gridExtra::grid.arrange(x, nrow=1)
+dev.off()
+
+library(RColorBrewer)
+display.brewer.all(colorblindFriendly = TRUE)
+
+
+
+
 
