@@ -18,6 +18,42 @@ library(ape)
 library(psych)
 library(psychometric)
 library(psych)
+library(MASS)
+require(foreign)
+require(ggplot2)
+require(maptools)
+library(tidyverse)
+library(betareg)
+library(car)
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+library(dplyr)
+library(patchwork) # To display 2 charts together
+library(hrbrthemes)
+library(psych) # for descriptive analysis
+library(forecast)
+library(lmtest)
+library(tseries)
+library(forecast)
+library(MASS)
+library(tseries)
+library(forecast)
+library(lubridate)
+library(ggplot2)
+library(zoo)
+library(Rcpp)
+library(prophet)
+library(data.table)
+library(dplyr)
+library(psych)
+require(MASS) # to access Animals data sets
+require(scales) # to access break formatting functions
+library(mgcv)
+library(GGally)
+library(mgcv)
+library(visreg)
+
 
 options(scipen = 999)
 setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
@@ -325,6 +361,77 @@ dev.off()
 library(RColorBrewer)
 display.brewer.all(colorblindFriendly = TRUE)
 
+
+library(ggplot2)
+library(forecast)
+setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
+Dengue <- read.csv("TS_Dengue.csv")
+
+#ARIMA Case
+
+DengueTS <- ts(Dengue$Case, start=c(2000))
+
+auto.arima(DengueTS)
+
+Fit<-Arima(DengueTS,order=c(1,1,2))
+summary(Fit)
+
+fcast <- forecast(Fit, h=5)
+library(ggfortify)
+x <- autoplot(fcast, size = 2) +
+  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model")+
+  guides(colour=guide_legend(title="Observed data"),
+         fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
+  theme( legend.text = element_text(color = "Black", size = 40),
+         text = element_text(size = 40))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                                                        labels = trans_format("log10", math_format(10^.x)))
+x
+
+
+#ARIMA Death
+
+DengueTS <- ts(Dengue$Death, start=c(2000))
+
+auto.arima(DengueTS)
+
+Fit<-Arima(DengueTS,order=c(1,1,1))
+summary(Fit)
+
+fcast <- forecast(Fit, h=5)
+library(ggfortify)
+y <- autoplot(fcast, size = 2) +
+  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model")+
+  guides(colour=guide_legend(title="Observed data"),
+         fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
+  theme( legend.text = element_text(color = "Black", size = 40),
+         text = element_text(size = 40))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                                                        labels = trans_format("log10", math_format(10^.x)))
+y
+
+
+#ARIMA Death
+
+DengueTS <- ts(Dengue$CFR, start=c(2000))
+
+auto.arima(DengueTS)
+
+Fit<-Arima(DengueTS,order=c(2,2,1))
+summary(Fit)
+
+fcast <- forecast(Fit, h=5)
+library(ggfortify)
+z <- autoplot(fcast, size = 2) +
+  xlab("Years") + ylab("Number of dengue cases") + ggtitle("ARIMA Model")+
+  guides(colour=guide_legend(title="Observed data"),
+         fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
+  theme( legend.text = element_text(color = "Black", size = 40),
+         text = element_text(size = 40))
+z
+
+
+tiff("arima.tiff", units="in", width=18, height=12, res=300)
+gridExtra::grid.arrange(z)
+dev.off()
 
 
 
