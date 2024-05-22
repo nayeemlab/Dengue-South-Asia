@@ -358,6 +358,96 @@ tiff("x.tiff", units="in", width=8, height=8, res=300)
 gridExtra::grid.arrange(x, nrow=1)
 dev.off()
 
+
+############
+library(tidyverse)
+
+
+df1 <- data.frame(Countries=c("BD Cases","BD Cases","BD Cases","BD Cases","BD Cases","BD Cases",
+                              "BD Cases","BD Cases","BD Cases","BD Cases","BD Cases","BD Cases",
+                              "BD Cases","BD Cases","BD Cases","BD Cases","BD Cases","BD Cases",
+                              "BD Cases","BD Cases","BD Cases","BD Cases","BD Cases","BD Cases",
+                              
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases"), 
+                  
+                  Years=c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
+                          
+                          2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023), 
+                  
+                  Values=c(5551, 2430, 6232, 486, 3934, 1048, 2200, 466, 1153, 474, 409, 1359, 671,
+                           1749, 375, 3162, 6060, 2769, 10148, 101354, 1405, 28429, 62382, 321179,
+                           
+                           0, 0, 0, 0, 1, 0, 32, 27, 10, 30, 917, 79, 183, 686, 356, 135, 
+                           1527, 2111, 811, 17992, 530, 540, 54784, 51243
+                  ))
+
+df1
+
+df2 <- data.frame(Countries=c("BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths",
+                              "BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths",
+                              "BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths","BD Deaths",
+                              "BD Deaths","BD Deaths","BD Deaths","BD Cases","BD Cases","BD Cases",
+                              
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases",
+                              "Nepal Cases","Nepal Cases","Nepal Cases","Nepal Cases"), 
+                  
+                  Years=c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
+                          
+                          2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023), 
+                  
+                  Values=c(5551, 2430, 6232, 486, 3934, 1048, 2200, 466, 1153, 474, 409, 1359, 671,
+                           1749, 375, 3162, 6060, 2769, 10148, 101354, 1405, 28429, 62382, 321179,
+                           
+                           0, 0, 0, 0, 1, 0, 32, 27, 10, 30, 917, 79, 183, 686, 356, 135, 
+                           1527, 2111, 811, 17992, 530, 540, 54784, 51243
+                  ))
+
+
+ggplot() + 
+  geom_col(data = df1, aes(x = Years, y = Values, fill = Countries), position = position_dodge()) +
+  scale_fill_manual("Countries", values = c("BD Cases" = "#56B4E9", "Nepal Cases" = "#E69F00"))+
+  geom_point(data = df2, aes(x = Years, y = Values*10,  group = Countries, col = Countries)) + 
+  geom_line(data = df2, aes(x = Years, y = Values*10, group = Countries, col = Countries)) +
+  scale_color_manual("Countries", values = c("BD Deaths" = "darkgrey", "Nepal Deaths" = "black"))+
+  scale_y_continuous(name = "First Axis",
+                     sec.axis = sec_axis(trans = ~.*1/10, name="Second Axis"))+
+  theme_bw()
+
+
+
++
+  ggtitle("Total number of cases and deaths \n due to dengue virus in South Asia (2000-2023)")+  theme(legend.title = element_text(size=15),
+                                                                                                       legend.text = element_text(size=15),
+                                                                                                       legend.position = c(0.9, 0.9),
+                                                                                                       plot.title = element_text(hjust = 0.5),
+                                                                                                       axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5),
+                                                                                                       text=element_text(size=15),
+                                                                                                       axis.text.y = element_text(hjust = 0.5),
+                                                                                                       axis.title.x = element_text(hjust = 0.5,size=15))
+
+
+
+
+
+
+
+
+
+
+
+
+
 library(RColorBrewer)
 display.brewer.all(colorblindFriendly = TRUE)
 
@@ -373,17 +463,17 @@ DengueTS <- ts(Dengue$Case, start=c(2000))
 
 auto.arima(DengueTS)
 
-Fit<-Arima(DengueTS,order=c(1,1,2))
+Fit<-Arima(DengueTS,order=c(1,2,2))
 summary(Fit)
 
 fcast <- forecast(Fit, h=5)
 library(ggfortify)
 x <- autoplot(fcast, size = 2) +
-  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model")+
+  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model (Cases)")+
   guides(colour=guide_legend(title="Observed data"),
          fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
-  theme( legend.text = element_text(color = "Black", size = 40),
-         text = element_text(size = 40))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+  theme( legend.text = element_text(color = "Black", size = 20),
+         text = element_text(size = 20))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
                                                         labels = trans_format("log10", math_format(10^.x)))
 x
 
@@ -394,17 +484,17 @@ DengueTS <- ts(Dengue$Death, start=c(2000))
 
 auto.arima(DengueTS)
 
-Fit<-Arima(DengueTS,order=c(1,1,1))
+Fit<-Arima(DengueTS,order=c(1,1,2))
 summary(Fit)
 
 fcast <- forecast(Fit, h=5)
 library(ggfortify)
 y <- autoplot(fcast, size = 2) +
-  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model")+
+  xlab("Years") + ylab("Number of dengue cases") +ggtitle("ARIMA Model (Deaths)")+
   guides(colour=guide_legend(title="Observed data"),
          fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
-  theme( legend.text = element_text(color = "Black", size = 40),
-         text = element_text(size = 40))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+  theme( legend.text = element_text(color = "Black", size = 20),
+         text = element_text(size = 20))+ scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
                                                         labels = trans_format("log10", math_format(10^.x)))
 y
 
@@ -415,22 +505,22 @@ DengueTS <- ts(Dengue$CFR, start=c(2000))
 
 auto.arima(DengueTS)
 
-Fit<-Arima(DengueTS,order=c(2,2,1))
+Fit<-Arima(DengueTS,order=c(1,2,2))
 summary(Fit)
 
 fcast <- forecast(Fit, h=5)
 library(ggfortify)
 z <- autoplot(fcast, size = 2) +
-  xlab("Years") + ylab("Number of dengue cases") + ggtitle("ARIMA Model")+
+  xlab("Years") + ylab("Number of dengue cases") + ggtitle("ARIMA Model (CFR (%))")+
   guides(colour=guide_legend(title="Observed data"),
          fill=guide_legend(title="Prediction interval"))+ theme(legend.position="bottom") + theme_bw()+
-  theme( legend.text = element_text(color = "Black", size = 40),
-         text = element_text(size = 40))
+  theme( legend.text = element_text(color = "Black", size = 20),
+         text = element_text(size = 20))
 z
 
 
-tiff("arima.tiff", units="in", width=18, height=12, res=300)
-gridExtra::grid.arrange(z)
+tiff("arima.tiff", units="in", width=18, height=6, res=300)
+gridExtra::grid.arrange(x,y,z, ncol=3, nrow=1)
 dev.off()
 
 
