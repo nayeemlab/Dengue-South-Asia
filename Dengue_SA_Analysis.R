@@ -810,49 +810,10 @@ library(sf)
 library(ggrepel)
 library(ggplot2)
 library(tidyverse)
-setwd("E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue Spatio\\resierraleonespacetimeclusteringanalysis")
-
-sldata <- read.csv("DataNew_17_8_23.csv", header = T)
-NROW(sldata)
-
-sldata_inside <- sldata[sldata$Latitude >= 23.7 & sldata$Latitude <= 23.9,]
-sldata_inside$Latitude
-max(sldata_inside$Latitude, na.rm=T)
-sldata_inside <- sldata_inside[sldata_inside$Longitude >= 90.35 & sldata_inside$Longitude <= 90.45,]
-sldata_inside$Longitude
-max(sldata_inside$Longitude, na.rm=T)
-NROW(sldata_inside)
-
-x <- NROW(sldata_inside)/NROW(sldata)
-x
-
-#sldata_inside <- sldata[sldata$Location == "Inside",]
-#sldata_inside <- sldata[sldata$Location == "Outside",]
-shp <- readOGR(dsn = "E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue Spatio\\Dhaka", "cc486qp3429")
-
-head(shp@data)
-xLon = sldata$HLon
-xLat = sldata$HLat
-
-SL.map <- fortify(shp, region = "fid")
-
-map1 <- ggplot() + 
-  geom_polygon(data = SL.map, aes(x = long, y = lat, group = group), colour = "cadetblue", fill = "azure2") +
-  labs(title = "Location of Dengue patients (Red) and Hospitals (Green)") +
-  xlab(label="Longitute") + ylab(label="Latitute")
-map1
-map2 <- map1 +  geom_point(data=sldata_inside, aes(x=Longitude, y=Latitude), colour = "darkgreen", size = 1)+
-  theme(axis.text = element_text(size = 20),
-        axis.title = element_text(size = 20),
-        plot.title = element_text(size = 15))
-
-
-map2
-
 
 #bangladesh
-
-sldata <- read.csv("DataNew_17_8_23.csv", header = T)
+setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
+sldata <- read.csv("CorData.csv", header = T)
 
 shp <- readOGR(dsn = "E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue Spatio\\sle_admbnda_adm4_1m_gov_ocha", "BGD_adm2")
 
@@ -864,15 +825,78 @@ SL.map <- fortify(shp, region = "NAME_2")
 
 map1 <- ggplot() + 
   geom_polygon(data = SL.map, aes(x = long, y = lat, group = group), colour = "cadetblue", fill = "azure2") +
-  labs(title = "Location of Dengue patients") +
+  labs(title = "Study Location") +
   xlab(label="Longitute") + ylab(label="Latitute")
 map1
 
-map2 <- map1 +  geom_point(data=sldata, aes(x=Longitude, y=Latitude), colour = "darkgreen", size = 2)+ 
+map2 <- map1 +  geom_point(data=sldata[sldata$Site == "NISB",], aes(x=Longitude, y=Latitude), colour = "red", size = 4, pch = 15)+ 
   theme(axis.text = element_text(size = 20),
         axis.title = element_text(size = 20),
         plot.title = element_text(size = 15))
 
 
 map2
+
+map3BD <- map2 +  geom_point(data=sldata[sldata$Site == "CBS",], aes(x=Longitude, y=Latitude), colour = "blue", size = 3, pch = 15)+ 
+  theme(axis.text = element_text(size = 20),
+        axis.title = element_text(size = 20),
+        plot.title = element_text(size = 15))
+
+
+map3BD
+
+
+################################################################################
+## Dengue - Data analysis ##
+################################################################################
+
+## Packages ##
+library(maptools)
+library(RColorBrewer)
+library(rgeos)
+library(rgdal)
+library(sp)
+library(sf)
+library(ggrepel)
+library(ggplot2)
+library(tidyverse)
+
+#bangladesh
+setwd('E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia')
+sldata <- read.csv("CorDataNPL.csv", header = T)
+
+shp <- readOGR(dsn = "E:\\ResearchProject\\Najmul Bhai\\Dengue\\Dengue South-Asia\\Local_Unit", "local_unit")
+
+head(shp@data)
+xLon = sldata$Longitude
+xLat = sldata$Latitude
+
+SL.map <- fortify(shp, region = "DISTRICT")
+
+map1 <- ggplot() + 
+  geom_polygon(data = SL.map, aes(x = long, y = lat, group = group), colour = "cadetblue", fill = "azure2") +
+  labs(title = "") +
+  xlab(label="Longitute") + ylab(label="Latitute")
+map1
+
+map2 <- map1 +  geom_point(data=sldata[sldata$Site == "NISB",], aes(x=Longitude, y=Latitude), colour = "red", size = 4, pch = 15)+ 
+  theme(axis.text = element_text(size = 20),
+        axis.title = element_text(size = 20),
+        plot.title = element_text(size = 15))
+
+
+map2
+
+map3NPL <- map2 +  geom_point(data=sldata[sldata$Site == "CBS",], aes(x=Longitude, y=Latitude), colour = "blue", size = 3, pch = 15)+ 
+  theme(axis.text = element_text(size = 20),
+        axis.title = element_text(size = 20),
+        plot.title = element_text(size = 15))
+
+
+map3NPL
+
+
+tiff("MAPBDNPL.tiff", units="in", width=12, height=6, res=300)
+gridExtra::grid.arrange(map3BD,map3NPL, ncol=2, nrow=1)
+dev.off()
 

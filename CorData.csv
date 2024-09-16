@@ -1,14 +1,14 @@
 ﻿Site,Name,Latitude,Longitude
-NISB,Thakurgaon,88.28,26.01
-NISB,Naogaon,88.56,24.48
-NISB,Satkhira,89.04,22.42
-NISB,Narsingdi,90.43,23.55
-NISB,Habiganj,91.24,24.22
-NISB,Cox’s Bazar,91.58,21.27
-NISB,Joypurhat,89.01,25.06
-NISB,Patuakhali,90.19,22.21
-NISB,Gazipur,90.25,23.59
-NISB,Dhaka,90.2426,23.42
-CBS,"Dhaka City South (Ward 47, 51)",90.243,23.43
-CBS,"Rajshahi City Corporation (Ward 4, 16, 19, 24, 28)",88.36,24.22
-CBS,"Sylhet City Corporation (Ward 10, 23, 26, 37, 39)",91.52,24.53
+NISB,Thakurgaon,26.015149,88.28116
+NISB,Naogaon,24.481505,88.56555
+NISB,Satkhira,22.422941,89.041866
+NISB,Narsingdi,23.552273,90.43365
+NISB,Habiganj,24.224958,91.244676
+NISB,Cox’s Bazar,21.42917509,92.00701817
+NISB,Joypurhat,25.06529,89.013842
+NISB,Patuakhali,22.211512,90.19516
+NISB,Gazipur,23.593025,90.251052
+NISB,Dhaka,23.423744,90.242678
+CBS,"Dhaka City South (Ward 47, 51)",23.432604,90.24306
+CBS,"Rajshahi City Corporation (Ward 4, 16, 19, 24, 28)",24.37816227,88.60031956
+CBS,"Sylhet City Corporation (Ward 10, 23, 26, 37, 39)",24.533012,91.525988
