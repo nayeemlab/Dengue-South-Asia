@@ -825,7 +825,7 @@ SL.map <- fortify(shp, region = "NAME_2")
 
 map1 <- ggplot() + 
   geom_polygon(data = SL.map, aes(x = long, y = lat, group = group), colour = "cadetblue", fill = "azure2") +
-  labs(title = "Study Location") +
+  labs(title = "Location of Dengue patients (Red) and Hospitals (Green)") +
   xlab(label="Longitute") + ylab(label="Latitute")
 map1
 
@@ -899,4 +899,7 @@ map3NPL
 tiff("MAPBDNPL.tiff", units="in", width=12, height=6, res=300)
 gridExtra::grid.arrange(map3BD,map3NPL, ncol=2, nrow=1)
 dev.off()
+
+
+
 

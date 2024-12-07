@@ -1,0 +1,193 @@
+﻿Countries,Year,Sero,Values
+Afganistan,2000,,0
+Afganistan,2001,,0
+Afganistan,2002,,0
+Afganistan,2003,,0
+Afganistan,2004,,0
+Afganistan,2005,,0
+Afganistan,2006,,0
+Afganistan,2007,,0
+Afganistan,2008,,0
+Afganistan,2009,,0
+Afganistan,2010,,0
+Afganistan,2011,,0
+Afganistan,2012,,0
+Afganistan,2013,,0
+Afganistan,2014,,0
+Afganistan,2015,,0
+Afganistan,2016,,0
+Afganistan,2017,,0
+Afganistan,2018,,0
+Afganistan,2019,,0
+Afganistan,2020,,0
+Afganistan,2021,"1,3",2
+Afganistan,2022,"1,2,3,4",4
+Afganistan,2023,"1,2,3,4",4
+Bangladesh,2000,,0
+Bangladesh,2001,,0
+Bangladesh,2002,,0
+Bangladesh,2003,,0
+Bangladesh,2004,,0
+Bangladesh,2005,,0
+Bangladesh,2006,,0
+Bangladesh,2007,,0
+Bangladesh,2008,,0
+Bangladesh,2009,,0
+Bangladesh,2010,,0
+Bangladesh,2011,,0
+Bangladesh,2012,,0
+Bangladesh,2013,"1,2",2
+Bangladesh,2014,"1,2",2
+Bangladesh,2015,"1,2",2
+Bangladesh,2016,"1,2",2
+Bangladesh,2017,"1,2",2
+Bangladesh,2018,"1,2,3",3
+Bangladesh,2019,"1,2,3",3
+Bangladesh,2020,,0
+Bangladesh,2021,,0
+Bangladesh,2022,"3,4",2
+Bangladesh,2023,"2,3,4",3
+Bhutan,2000,,0
+Bhutan,2001,,0
+Bhutan,2002,,0
+Bhutan,2003,,0
+Bhutan,2004,"1,2",2
+Bhutan,2005,3,1
+Bhutan,2006,3,1
+Bhutan,2007,,0
+Bhutan,2008,,0
+Bhutan,2009,,0
+Bhutan,2010,,0
+Bhutan,2011,,0
+Bhutan,2012,"1,2,3",3
+Bhutan,2013,"1,2,3",3
+Bhutan,2014,,0
+Bhutan,2015,,0
+Bhutan,2016,"1,2",2
+Bhutan,2017,"1,2",2
+Bhutan,2018,"1,2",2
+Bhutan,2019,"1,2,3",3
+Bhutan,2020,,0
+Bhutan,2021,,0
+Bhutan,2022,,0
+Bhutan,2023,,0
+India,2000,"1,2,3",3
+India,2001,"1,2,3",3
+India,2002,"1,2,3",3
+India,2003,"1,2,3",3
+India,2004,"1,2,3",3
+India,2005,"1,2,3",3
+India,2006,"1,2,3",3
+India,2007,"1,2,3",3
+India,2008,"1,2,3",3
+India,2009,"1,2,3",3
+India,2010,"1,2,3",3
+India,2011,"1,2,3",3
+India,2012,"1,2,3",3
+India,2013,"1,2,3,4",4
+India,2014,"1,2,3,4",4
+India,2015,"1,2,3,4",4
+India,2016,"1,2,3,4",4
+India,2017,"1,2,3,4",4
+India,2018,"1,2,3,4",4
+India,2019,"1,2,3,4",4
+India,2020,"1,2,3,4",4
+India,2021,"1,2,3,4",4
+India,2022,"1,2,3,4",4
+India,2023,"1,2,3,4",4
+Maldives,2000,,0
+Maldives,2001,,0
+Maldives,2002,,0
+Maldives,2003,,0
+Maldives,2004,,0
+Maldives,2005,,0
+Maldives,2006,,0
+Maldives,2007,,0
+Maldives,2008,,0
+Maldives,2009,,0
+Maldives,2010,,0
+Maldives,2011,,0
+Maldives,2012,,0
+Maldives,2013,,0
+Maldives,2014,,0
+Maldives,2015,,0
+Maldives,2016,,0
+Maldives,2017,,0
+Maldives,2018,2,1
+Maldives,2019,3,1
+Maldives,2020,3,1
+Maldives,2021,,0
+Maldives,2022,3,1
+Maldives,2023,,0
+Nepal,2000,,0
+Nepal,2001,,0
+Nepal,2002,,0
+Nepal,2003,,0
+Nepal,2004,,0
+Nepal,2005,,0
+Nepal,2006,,0
+Nepal,2007,,0
+Nepal,2008,,0
+Nepal,2009,,0
+Nepal,2010,1,1
+Nepal,2011,,0
+Nepal,2012,,0
+Nepal,2013,2,1
+Nepal,2014,,0
+Nepal,2015,1,1
+Nepal,2016,1,1
+Nepal,2017,1,1
+Nepal,2018,1,1
+Nepal,2019,"1,2",2
+Nepal,2020,,0
+Nepal,2021,,0
+Nepal,2022,"1,2,3",3
+Nepal,2023,"1,2,3",3
+Pakistan,2000,,0
+Pakistan,2001,,0
+Pakistan,2002,,0
+Pakistan,2003,,0
+Pakistan,2004,,0
+Pakistan,2005,"1,2,3",3
+Pakistan,2006,,0
+Pakistan,2007,,0
+Pakistan,2008,"1,2,3",3
+Pakistan,2009,"2,3",2
+Pakistan,2010,"1,2",2
+Pakistan,2011,"2,3,4",3
+Pakistan,2012,,0
+Pakistan,2013,"2,3",2
+Pakistan,2014,"1,2",2
+Pakistan,2015,"1,2",2
+Pakistan,2016,"1,2",2
+Pakistan,2017,"1,2,3",3
+Pakistan,2018,"1,2,3",3
+Pakistan,2019,"1,2,3",3
+Pakistan,2020,,0
+Pakistan,2021,"1,2",2
+Pakistan,2022,"1,2,3",3
+Pakistan,2023,"1,2,3",3
+Sri Lanka,2000,"2,3",2
+Sri Lanka,2001,"2,3",2
+Sri Lanka,2002,"2,3",2
+Sri Lanka,2003,"2,3",2
+Sri Lanka,2004,"2,3",2
+Sri Lanka,2005,"2,3",2
+Sri Lanka,2006,"2,3",2
+Sri Lanka,2007,"2,3",2
+Sri Lanka,2008,"2,3",2
+Sri Lanka,2009,"1,3",2
+Sri Lanka,2010,1,1
+Sri Lanka,2011,1,1
+Sri Lanka,2012,1,1
+Sri Lanka,2013,1,1
+Sri Lanka,2014,1,1
+Sri Lanka,2015,1,1
+Sri Lanka,2016,1,1
+Sri Lanka,2017,2,1
+Sri Lanka,2018,"1,2",2
+Sri Lanka,2019,"1,2,3",3
+Sri Lanka,2020,"1,2,3",3
+Sri Lanka,2021,"1,2,3",3
+Sri Lanka,2022,"1,2,3",3
+Sri Lanka,2023,"1,2,3",3
